@@ -17,9 +17,9 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-	  with:
-	   fetch-depth: 0
-         token: ${{ secrets.PAT }}
+	with:
+	fetch-depth: 0
+        token: ${{ secrets.PAT }}
 
       - name: Setup Python
         uses: actions/setup-python@v1
