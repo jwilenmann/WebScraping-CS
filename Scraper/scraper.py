@@ -31,7 +31,7 @@ def select_option(driver, xpath, index):
 
 url = 'https://www.pjud.cl/tribunales/corte-suprema'
 chrome_options = Options()
-path = os.path.join(os.getcwd(), "output\\")
+path = os.path.join(os.getcwd(), "output\")
 prefs = {"download.default_directory" : path,  "directory_upgrade": True}
 chrome_options.add_experimental_option("prefs",prefs)
 chrome_options.add_argument('--headless')
