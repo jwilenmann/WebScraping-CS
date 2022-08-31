@@ -13,10 +13,10 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
- 	  with:
-   	   fetch-depth: 0
-    	   ref: main
-    	   token: $
+	  with:
+		fetch-depth: 0
+    	   	ref: main
+    	   	token: $
       - name: Setup Python
         uses: actions/setup-python@v1
         with:
