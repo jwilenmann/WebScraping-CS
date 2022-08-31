@@ -29,10 +29,10 @@ def select_option(driver, xpath, index):
 
 
 url = 'https://www.pjud.cl/tribunales/corte-suprema'
-chromeOptions = webdriver.ChromeOptions()
+
 path = os.path.join(os.getcwd(), "output\\")
 prefs = {"download.default_directory" : path,  "directory_upgrade": True}
-chromeOptions.add_experimental_option("prefs",prefs)
+webdriver.ChromeOptions.add_experimental_option("prefs",prefs)
 driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options = chromeOptions)
 driver.get(url)
 
