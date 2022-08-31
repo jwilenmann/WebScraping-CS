@@ -43,12 +43,14 @@ driver.implicitly_wait(10)
 anos = ["2015", "2016", "2017", "2018", "2019"]
 meses = ["01", "02", "03", "04", "05", "06", "07", "08", '09', '10', '11', '12']
 
-
+Integraciones = driver.find_element(By.XPATH, 
+"/html/body/section/div/div/div[1]/div[2]/div/div/div/div/div/div/div/div[1]/div[2]/div[1]/div/div/div[3]/div/div/a[6]")
+Integraciones.click()
 
 for ano in anos:
     # Estos indices se obtienen de las opciones de la pagina, cada uno es un mes, cambiar para obtener mas meses
     #for index in range(1, 2):
-        # Se envia la info a la pagina
+        # Se envia la info a la pagina /html/body/div[11]/div/div/div[2]/form/div[2]/div[1]/div/select
     select_option(driver, '/html/body/div[11]/div/div/div[2]/form/div[2]/div[1]/div/select', str(ano))
     for mes in meses:
         select_option(driver, '/html/body/div[11]/div/div/div[2]/form/div[2]/div[2]/div/select', mes)
