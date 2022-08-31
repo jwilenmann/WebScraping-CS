@@ -1,3 +1,6 @@
 pandas==1.2.4
+PyPDF2==2.10.4
 selenium==4.4.3
+tabula==1.0.5
+tabula_py==2.5.0
 webdriver_manager==3.8.3
