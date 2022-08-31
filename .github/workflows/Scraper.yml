@@ -1,11 +1,23 @@
 # This is a basic workflow to help you get started with Actions
 
 name: Scraper
+createSpeakerListJson:
+  needs: addNewSpeaker
+  uses: dataplat/DataSpeakers/.github/workflows/wesbiteFile.yml@main
+  secrets:
+    REPO_TOKEN: $
 on:
+ workflow_call:
+  secrets:
+    REPO_TOKEN: 
+      required: true
   schedule:
   - cron: "0 0 1 * *"
   workflow_dispatch:
-
+  branches:
+  - main
+  paths:
+  - speakers/*
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   Scraper:
