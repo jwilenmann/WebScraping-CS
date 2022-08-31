@@ -17,6 +17,7 @@ jobs:
 		fetch-depth: 0
     	   	ref: main
     	   	token: $
+
       - name: Setup Python
         uses: actions/setup-python@v1
         with:
