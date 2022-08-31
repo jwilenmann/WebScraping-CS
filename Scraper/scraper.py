@@ -40,8 +40,9 @@ driver.get(url)
 
 driver.implicitly_wait(10)
 
-anos = ["2015", "2016", "2017", "2018", "2019"]
-meses = ["01", "02", "03", "04", "05", "06", "07", "08", '09', '10', '11', '12']
+#anos = ["2015", "2016", "2017", "2018", "2019"]
+anos = ["2022"] 
+meses = ["01", "02", "03", "04", "05", "06", "07", "08"]
 
 Integraciones = driver.find_element(By.XPATH, 
 "/html/body/section/div/div/div[1]/div[2]/div/div/div/div/div/div/div/div[1]/div[2]/div[1]/div/div/div[3]/div/div/a[6]")
