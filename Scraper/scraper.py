@@ -35,7 +35,7 @@ path = os.path.join(os.getcwd(), "output")
 prefs = {"download.default_directory" : path,  "download.prompt_for_download": False,
     "download.directory_upgrade": True}
 chrome_options.add_experimental_option("prefs",prefs)
-chrome_options.add_argument('--headless')
+#chrome_options.add_argument('--headless')
 driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options = chrome_options)
 driver.get(url)
 
@@ -60,6 +60,23 @@ select_option(driver, '/html/body/div[11]/div/div/div[2]/form/div[2]/div[2]/div/
 select = Select(driver.find_element(By.XPATH, "/html/body/div[11]/div/div/div[2]/form/div[2]/div[3]/div/select")) #get all the options into a list
 optionsList = []
 
+
+
+counter1 = 0
+counter2 = 0
+counter3 = 0
+counter4 = 0
+
+old_name1 = path + "Sala+1.pdf"
+old_name2 = path + "Sala+2.pdf"
+old_name3 = path + "Sala+3.pdf"
+old_name4 = path + "Sala+4.pdf"
+
+new_name1 = old_name1 
+new_name2 = old_name2 
+new_name3 = old_name3 
+new_name4 = old_name4 
+
 for item in select.options:
     optionsList.append(item.get_attribute("value"))            
     for optionValue in optionsList:
@@ -69,19 +86,30 @@ for item in select.options:
         driver.find_element(By.XPATH, '/html/body/div[11]/div/div/div[2]/form/div[2]/div[4]/button').click()
         
         # Se descargan los datos
-        wait = WebDriverWait(driver, 3) 
+        wait = WebDriverWait(driver, 5) 
     #descarga por salas cambia último tr: 1, 2, 3, 4 - no siempre está disponible, el mismo día, las mismas salas
         try: 
             boton_descarga = wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[11]/div/div/div[2]/table/tbody/tr[1]/td[1]/a')))
             boton_descarga.click()
+            os.rename(old_name1, new_name1)
+            old_name1 = new_name1
+            counter1 += 1
+            new_name1 = new_name1 + str(counter1)
 
-            
+
+
+
         except: 
             pass
         
         try: 
             boton_descarga = wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[11]/div/div/div[2]/table/tbody/tr[2]/td[1]/a')))
             boton_descarga.click()
+            os.rename(old_name2, new_name2)
+            old_name2 = new_name2
+            counter2 += 1
+            new_name2 = new_name2 + str(counter2)
+
 
         except: 
             pass
@@ -89,7 +117,10 @@ for item in select.options:
         try: 
             boton_descarga = wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[11]/div/div/div[2]/table/tbody/tr[3]/td[1]/a')))
             boton_descarga.click()
-
+            os.rename(old_name3, new_name3)
+            old_name3 = new_name3
+            counter3 += 1
+            new_name3 = new_name3 + str(counter3)
 
         except: 
             pass
@@ -97,8 +128,12 @@ for item in select.options:
         try: 
             boton_descarga = wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[11]/div/div/div[2]/table/tbody/tr[4]/td[1]/a')))
             boton_descarga.click()
-
+            os.rename(old_name4, new_name4)
+            old_name4 = new_name4
+            counter4 += 1
+            new_name4 = new_name4 + str(counter4)
 
         except: 
             pass
 driver.close
+
