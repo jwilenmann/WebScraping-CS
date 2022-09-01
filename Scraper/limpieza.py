@@ -20,7 +20,7 @@ df = pd.DataFrame(columns = columns)
 palabras = ['licencia', 'comisi ón', 'permiso', 'feriado', 'inhabilidad', 'subroga', 'vacancia']
 
 
-pdf_files = glob.glob(os.path.join(os.getcwd(), "output\\",'*.pdf'))
+pdf_files = glob.glob(os.path.join(os.getcwd(), "output",'*.pdf'))
 
 count = 0
 extractedtext = ""
