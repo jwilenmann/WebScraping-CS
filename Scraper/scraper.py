@@ -196,5 +196,7 @@ for item in select.options:
 
         except: 
             pass
+
+df.to_csv("prueba")
 driver.close
 
