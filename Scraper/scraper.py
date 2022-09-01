@@ -67,10 +67,10 @@ counter2 = 0
 counter3 = 0
 counter4 = 0
 
-old_name1 = path + "Sala+1.pdf"
-old_name2 = path + "Sala+2.pdf"
-old_name3 = path + "Sala+3.pdf"
-old_name4 = path + "Sala+4.pdf"
+old_name1 = path + "\\" + "Sala+1.pdf"
+old_name2 = path + "\\" + "Sala+2.pdf"
+old_name3 = path + "\\" + "Sala+3.pdf"
+old_name4 = path + "\\" + "Sala+4.pdf"
 
 new_name1 = old_name1 
 new_name2 = old_name2 
@@ -94,7 +94,7 @@ for item in select.options:
             os.rename(old_name1, new_name1)
             old_name1 = new_name1
             counter1 += 1
-            new_name1 = new_name1 + str(counter1)
+            new_name1 = new_name1[:-4] + "_" + str(counter1) + ".pdf"
 
 
 
@@ -108,7 +108,7 @@ for item in select.options:
             os.rename(old_name2, new_name2)
             old_name2 = new_name2
             counter2 += 1
-            new_name2 = new_name2 + str(counter2)
+            new_name2 = new_name2[:-4] + "_" + str(counter2) + ".pdf"
 
 
         except: 
@@ -120,7 +120,7 @@ for item in select.options:
             os.rename(old_name3, new_name3)
             old_name3 = new_name3
             counter3 += 1
-            new_name3 = new_name3 + str(counter3)
+            new_name3 = new_name3[:-4] + "_" + str(counter3) + ".pdf"
 
         except: 
             pass
@@ -131,7 +131,7 @@ for item in select.options:
             os.rename(old_name4, new_name4)
             old_name4 = new_name4
             counter4 += 1
-            new_name4 = new_name4 + str(counter4)
+            new_name4 = new_name4[:-4] + "_" + str(counter4) + ".pdf"
 
         except: 
             pass
