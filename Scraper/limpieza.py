@@ -89,7 +89,7 @@ for old, new in meses.items():
 #concatenación fecha en formato
 df['Fecha2'] = df['Dia'] + '/' + df['Mes'] + '/' + df['Ano']
 #transformación a datetime
-df['Fecha2'] = pd.to_datetime(df["Fecha2"], format = '%d/%B/%y')
+df['Fecha2'] = pd.to_datetime(df["Fecha2"], format = '%d/%m/%y')
 
 df2 = df
 df2['Presidente'] = df2['Integrantes'].str[0]
