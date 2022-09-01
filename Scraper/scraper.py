@@ -33,9 +33,7 @@ url = 'https://www.pjud.cl/tribunales/corte-suprema'
 chrome_options = Options()
 path = os.path.join(os.getcwd(), "output")
 prefs = {"download.default_directory" : path,  "download.prompt_for_download": False,
-    "download.directory_upgrade": True,
-    "safebrowsing_for_trusted_sources_enabled": False,
-    "safebrowsing.enabled": False}
+    "download.directory_upgrade": True}
 chrome_options.add_experimental_option("prefs",prefs)
 #chrome_options.add_argument('--headless')
 driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options = chrome_options)
