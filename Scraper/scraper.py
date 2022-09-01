@@ -67,10 +67,10 @@ counter2 = 0
 counter3 = 0
 counter4 = 0
 
-old_name1 = path + "\" + "Sala+1.pdf"
-old_name2 = path + "\" + "Sala+2.pdf"
-old_name3 = path + "\" + "Sala+3.pdf"
-old_name4 = path + "\" + "Sala+4.pdf"
+old_name1 = path + "\\" + "Sala+1.pdf"
+old_name2 = path + "\\" + "Sala+2.pdf"
+old_name3 = path + "\\" + "Sala+3.pdf"
+old_name4 = path + "\\" + "Sala+4.pdf"
 
 new_name1 = old_name1 
 new_name2 = old_name2 
