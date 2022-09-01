@@ -73,7 +73,7 @@ for item in select.options:
         driver.find_element(By.XPATH, '/html/body/div[11]/div/div/div[2]/form/div[2]/div[4]/button').click()
         
         # Se descargan los datos
-        wait = WebDriverWait(driver, 3) 
+        wait = WebDriverWait(driver, 10) 
     #descarga por salas cambia último tr: 1, 2, 3, 4 - no siempre está disponible, el mismo día, las mismas salas
         try: 
             boton_descarga = wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[11]/div/div/div[2]/table/tbody/tr[1]/td[1]/a')))
