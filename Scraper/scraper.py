@@ -28,7 +28,10 @@ def select_option(driver, xpath, index):
     select_object = Select(driver.find_element(By.XPATH, xpath))
     select_object.select_by_value(index)
 
+columns = ['Fecha', 'Sala', 'Integrantes', 'Causa']
+df = pd.DataFrame(columns = columns)
 
+palabras = ['licencia', 'comisi ón', 'permiso', 'feriado', 'inhabilidad', 'subroga', 'vacancia']
 
 url = 'https://www.pjud.cl/tribunales/corte-suprema'
 chrome_options = Options()
