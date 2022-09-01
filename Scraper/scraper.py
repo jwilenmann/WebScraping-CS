@@ -39,7 +39,7 @@ Sala1 = path + "\\" + "Sala+1.pdf"
 Sala2 = path + "\\" + "Sala+2.pdf"
 Sala3 = path + "\\" + "Sala+3.pdf"
 Sala4 = path + "\\" + "Sala+4.pdf"
-#chrome_options.add_argument('--headless')
+chrome_options.add_argument('--headless')
 driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options = chrome_options)
 driver.get(url)
 
