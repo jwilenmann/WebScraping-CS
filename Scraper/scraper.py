@@ -38,10 +38,10 @@ chrome_options = Options()
 path = os.path.join(os.getcwd(), "output")
 prefs = {"download.default_directory" : path,  "directory_upgrade": True}
 chrome_options.add_experimental_option("prefs",prefs)
-Sala1 = path + "\\" + "Sala+1.pdf"
-Sala2 = path + "\\" + "Sala+2.pdf"
-Sala3 = path + "\\" + "Sala+3.pdf"
-Sala4 = path + "\\" + "Sala+4.pdf"
+Sala1 = "Scraper/output/Sala+1.pdf"
+Sala2 = "Scraper/output/Sala+2.pdf"
+Sala3 = "Scraper/output/Sala+3.pdf"
+Sala4 = "Scraper/output/Sala+4.pdf"
 chrome_options.add_argument('--headless')
 driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options = chrome_options)
 driver.get(url)
