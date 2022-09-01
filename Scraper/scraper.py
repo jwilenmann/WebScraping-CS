@@ -28,35 +28,16 @@ def select_option(driver, xpath, index):
     select_object = Select(driver.find_element(By.XPATH, xpath))
     select_object.select_by_value(index)
 
-def getDownLoadedFileName(waitTime):
-    driver.execute_script("window.open()")
-    # switch to new tab
-    driver.switch_to.window(driver.window_handles[-1])
-    # navigate to chrome downloads
-    driver.get('chrome://downloads')
-    # define the endTime
-    endTime = time.time()+waitTime
-    while True:
-        try:
-            # get downloaded percentage
-            downloadPercentage = driver.execute_script(
-                "return document.querySelector('downloads-manager').shadowRoot.querySelector('#downloadsList downloads-item').shadowRoot.querySelector('#progress').value")
-            # check if downloadPercentage is 100 (otherwise the script will keep waiting)
-            if downloadPercentage == 100:
-                # return the file name once the download is completed
-                return driver.execute_script("return document.querySelector('downloads-manager').shadowRoot.querySelector('#downloadsList downloads-item').shadowRoot.querySelector('div#content  #file-link').text")
-        except:
-            pass
-        time.sleep(1)
-        if time.time() > endTime:
-            break
 
 url = 'https://www.pjud.cl/tribunales/corte-suprema'
 chrome_options = Options()
 path = os.path.join(os.getcwd(), "output")
-prefs = {"download.default_directory" : path,  "directory_upgrade": True}
+prefs = {"download.default_directory" : path,  "download.prompt_for_download": False,
+    "download.directory_upgrade": True,
+    "safebrowsing_for_trusted_sources_enabled": False,
+    "safebrowsing.enabled": False}
 chrome_options.add_experimental_option("prefs",prefs)
-chrome_options.add_argument('--headless')
+#chrome_options.add_argument('--headless')
 driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options = chrome_options)
 driver.get(url)
 
@@ -80,6 +61,7 @@ select_option(driver, '/html/body/div[11]/div/div/div[2]/form/div[2]/div[1]/div/
 select_option(driver, '/html/body/div[11]/div/div/div[2]/form/div[2]/div[2]/div/select', c_mes)
 select = Select(driver.find_element(By.XPATH, "/html/body/div[11]/div/div/div[2]/form/div[2]/div[3]/div/select")) #get all the options into a list
 optionsList = []
+
 for item in select.options:
     optionsList.append(item.get_attribute("value"))            
     for optionValue in optionsList:
@@ -89,13 +71,12 @@ for item in select.options:
         driver.find_element(By.XPATH, '/html/body/div[11]/div/div/div[2]/form/div[2]/div[4]/button').click()
         
         # Se descargan los datos
-        wait = WebDriverWait(driver, 10) 
+        wait = WebDriverWait(driver, 3) 
     #descarga por salas cambia último tr: 1, 2, 3, 4 - no siempre está disponible, el mismo día, las mismas salas
         try: 
             boton_descarga = wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[11]/div/div/div[2]/table/tbody/tr[1]/td[1]/a')))
             boton_descarga.click()
-            latestDownloadedFileName = getDownLoadedFileName(10) #waiting 3 minutes to complete the download
-            print(latestDownloadedFileName)
+
             
         except: 
             pass
@@ -103,8 +84,6 @@ for item in select.options:
         try: 
             boton_descarga = wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[11]/div/div/div[2]/table/tbody/tr[2]/td[1]/a')))
             boton_descarga.click()
-            latestDownloadedFileName = getDownLoadedFileName(10) #waiting 3 minutes to complete the download
-            print(latestDownloadedFileName) 
 
         except: 
             pass
@@ -112,8 +91,7 @@ for item in select.options:
         try: 
             boton_descarga = wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[11]/div/div/div[2]/table/tbody/tr[3]/td[1]/a')))
             boton_descarga.click()
-            latestDownloadedFileName = getDownLoadedFileName(10) #waiting 3 minutes to complete the download
-            print(latestDownloadedFileName)
+
 
         except: 
             pass
@@ -121,8 +99,7 @@ for item in select.options:
         try: 
             boton_descarga = wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[11]/div/div/div[2]/table/tbody/tr[4]/td[1]/a')))
             boton_descarga.click()
-            latestDownloadedFileName = getDownLoadedFileName(10) #waiting 3 minutes to complete the download
-            print(latestDownloadedFileName)
+
 
         except: 
             pass
