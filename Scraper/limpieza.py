@@ -79,6 +79,13 @@ df['Mes'] = df['Mes'].str.split(n=1).str[1]
 df['Mes'] = df['Mes'].str.lstrip()
 df['Mes'] = df['Mes'].str.split(' ').str[1] 
 
+meses = {'enero': '01', 'febrero': '02', 'marzo': '03', "abril":'04', "mayo" : '05', "junio":'06', "julio": '07', 
+        'agosto':'08', 'septiembre':'09', 'octubre':'10', 'noviembre':'11', 'diciembre':'12'}
+        
+
+for old, new in meses.items():
+    df['Mes'] = df['Mes'].str.replace(old, new, regex=True)
+
 #concatenación fecha en formato
 df['Fecha2'] = df['Dia'] + '/' + df['Mes'] + '/' + df['Ano']
 #transformación a datetime
