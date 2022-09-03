@@ -28,10 +28,6 @@ def select_option(driver, xpath, index):
     select_object = Select(driver.find_element(By.XPATH, xpath))
     select_object.select_by_value(index)
 
-columns = ['Fecha', 'Sala', 'Integrantes', 'Causa']
-df = pd.DataFrame(columns = columns)
-
-palabras = ['licencia', 'comisi ón', 'permiso', 'feriado', 'inhabilidad', 'subroga', 'vacancia']
 
 url = 'https://www.pjud.cl/tribunales/corte-suprema'
 chrome_options = Options()
@@ -81,59 +77,13 @@ for item in select.options:
         try: 
             boton_descarga = wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[11]/div/div/div[2]/table/tbody/tr[1]/td[1]/a')))
             boton_descarga.click()
-            pdfFileObj = open(Sala1,'rb')               
-            pdfReader = PyPDF2.PdfFileReader(pdfFileObj)   
-            num_pages = pdfReader.numPages
-            pdfPageObj = pdfReader.getPage(0)
-            text = pdfPageObj.extractText()
-            Causa = []
-            if re.search("INSTALACI", text):
-                Integrantes = re.findall('(?<=ÑOR).*?(?=\s)', text)
-                try:
-                    Fecha = re.findall('(?<=FIRMADIGITAL).*?(?=\\\n)', text)[0]
-                except:
-                    pass
-                try:
-                    Sala = re.findall('(?<=\\s).*?(?=\\sSALA)', text)[0]
-                except:
-                    pass
-                for palabra in palabras:         
-                    if palabra in text:
-                        Causa.append(palabra)
-                df = df.append(
-               {"Fecha" : str(Fecha), "Sala" : str(Sala), "Integrantes" : Integrantes, 'Causa' : Causa},
-               ignore_index=True,
-            )
-            
+
         except: 
             pass
         
         try: 
             boton_descarga = wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[11]/div/div/div[2]/table/tbody/tr[2]/td[1]/a')))
             boton_descarga.click()
-            pdfFileObj = open(Sala2,'rb')               
-            pdfReader = PyPDF2.PdfFileReader(pdfFileObj)   
-            num_pages = pdfReader.numPages
-            pdfPageObj = pdfReader.getPage(0)
-            text = pdfPageObj.extractText()
-            Causa = []
-            if re.search("INSTALACI", text):
-                Integrantes = re.findall('(?<=ÑOR).*?(?=\s)', text)
-                try:
-                    Fecha = re.findall('(?<=FIRMADIGITAL).*?(?=\\\n)', text)[0]
-                except:
-                    pass
-                try:
-                    Sala = re.findall('(?<=\\s).*?(?=\\sSALA)', text)[0]
-                except:
-                    pass
-                for palabra in palabras:         
-                    if palabra in text:
-                        Causa.append(palabra)
-                df = df.append(
-               {"Fecha" : str(Fecha), "Sala" : str(Sala), "Integrantes" : Integrantes, 'Causa' : Causa},
-               ignore_index=True,
-            )
 
         except: 
             pass
@@ -141,30 +91,6 @@ for item in select.options:
         try: 
             boton_descarga = wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[11]/div/div/div[2]/table/tbody/tr[3]/td[1]/a')))
             boton_descarga.click()
-            pdfFileObj = open(Sala3,'rb')               
-            pdfReader = PyPDF2.PdfFileReader(pdfFileObj)   
-            num_pages = pdfReader.numPages
-            pdfPageObj = pdfReader.getPage(0)
-            text = pdfPageObj.extractText()
-            Causa = []
-            if re.search("INSTALACI", text):
-                Integrantes = re.findall('(?<=ÑOR).*?(?=\s)', text)
-                try:
-                    Fecha = re.findall('(?<=FIRMADIGITAL).*?(?=\\\n)', text)[0]
-                except:
-                    pass
-                try:
-                    Sala = re.findall('(?<=\\s).*?(?=\\sSALA)', text)[0]
-                except:
-                    pass
-                for palabra in palabras:         
-                    if palabra in text:
-                        Causa.append(palabra)
-                df = df.append(
-               {"Fecha" : str(Fecha), "Sala" : str(Sala), "Integrantes" : Integrantes, 'Causa' : Causa},
-               ignore_index=True,
-            )
-
 
         except: 
             pass
@@ -172,34 +98,10 @@ for item in select.options:
         try: 
             boton_descarga = wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[11]/div/div/div[2]/table/tbody/tr[4]/td[1]/a')))
             boton_descarga.click()
-            pdfFileObj = open(Sala1,'rb')               
-            pdfReader = PyPDF2.PdfFileReader(pdfFileObj)   
-            num_pages = pdfReader.numPages
-            pdfPageObj = pdfReader.getPage(0)
-            text = pdfPageObj.extractText()
-            Causa = []
-            if re.search("INSTALACI", text):
-                Integrantes = re.findall('(?<=ÑOR).*?(?=\s)', text)
-                try:
-                    Fecha = re.findall('(?<=FIRMADIGITAL).*?(?=\\\n)', text)[0]
-                except:
-                    pass
-                try:
-                    Sala = re.findall('(?<=\\s).*?(?=\\sSALA)', text)[0]
-                except:
-                    pass
-                for palabra in palabras:         
-                    if palabra in text:
-                        Causa.append(palabra)
-                df = df.append(
-               {"Fecha" : str(Fecha), "Sala" : str(Sala), "Integrantes" : Integrantes, 'Causa' : Causa},
-               ignore_index=True,
-            )
 
 
         except: 
             pass
 
-df.to_csv("prueba")
 driver.close
 
