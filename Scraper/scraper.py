@@ -36,7 +36,7 @@ def scraper(url, list_anios, list_meses, list_dias=None):
     prefs = {"download.default_directory" : path,  "directory_upgrade": True}
     chrome_options.add_experimental_option("prefs",prefs)
     chrome_options.add_argument('--headless')
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options = chrome_options)
     driver.get(url)
 
     driver.implicitly_wait(10)
